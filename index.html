@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>استرولوجي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion: a calm, elegant astrologer's storefront in Egyptian Arabic
+   IDEA the printed reading menu he already uses, grown into a whole page around a natal chart
+   PICTURE a large gold-on-navy natal chart wheel: 12 signs, house lines, planets, aspect lines
+   COLOUR cream ground, navy ink and bands, his gold for prices and the wheel
+   TYPE Tajawal 800 for titles + Tajawal for text
+   LAYOUT laptop: title and booking buttons beside the wheel, then services in three groups; phone: title, wheel, buttons, then stacked */
+:root{color-scheme:light dark;--bg:light-dark(#f5f0e8,#0f1530);--ink:light-dark(#1b2342,#efe8da);--soft:light-dark(#5d6178,#b9b5c6);--navy:#1b2342;--gold:light-dark(#a8843f,#d4b26a);--line:light-dark(#ddd2bf,#2a3358);--card:light-dark(#fbf8f2,#151c3d)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Tajawal,"Segoe UI",Tahoma,sans-serif;overflow-x:clip}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding-block:clamp(32px,5vw,72px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+nav{position:sticky;top:0;z-index:5;background:var(--navy);color:#f5f0e8}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px max(5vw,16px)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px;text-decoration:none;color:#f5f0e8}
+.logo svg{width:30px;height:30px}
+nav ul{display:flex;gap:6px 22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{text-decoration:none;font-weight:500;opacity:.9;padding:8px 0;display:inline-block}
+nav ul a:hover{color:#d4b26a}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,64px);align-items:center}
+h1,h2,h3{font-weight:800;line-height:1.15;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h1{font-size:clamp(36px,5.2vw,58px)}
+h2{font-size:clamp(30px,3.6vw,42px)}
+h3{font-size:21px}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--soft);max-width:34em;margin:18px 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 26px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--navy);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,.buy:focus-visible,nav a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn.main{background:var(--navy);color:#f5f0e8}
+.btn.alt{color:var(--ink);border-color:var(--gold)}
+:root[data-theme=dark] .btn.main{background:#d4b26a;color:#1b2342;border-color:#d4b26a}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .btn.main{background:#d4b26a;color:#1b2342;border-color:#d4b26a}}
+.trust{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;color:var(--soft);font-size:15px}
+.trust span{display:inline-flex;align-items:center;gap:8px}
+.trust i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.fig{position:relative;aspect-ratio:1;width:100%;max-width:560px;justify-self:center}
+.fig svg{position:absolute;inset:0;width:100%;height:100%}
+#spin{transform-origin:300px 300px;animation:turn 240s linear infinite}
+@keyframes turn{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){#spin{animation:none}html{scroll-behavior:auto}}
+.services{background:var(--card);border-block:1px solid var(--line)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:12px 32px;flex-wrap:wrap;margin-bottom:28px}
+.head p{margin:0;color:var(--soft);max-width:36em}
+.groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.group{background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:22px 22px 10px}
+.tag{display:inline-block;background:var(--navy);color:#f5f0e8;border-radius:999px;padding:6px 18px;font-weight:700;font-size:16px;margin-bottom:8px}
+:root[data-theme=dark] .tag{background:#d4b26a;color:#1b2342}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .tag{background:#d4b26a;color:#1b2342}}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
+.item:last-child{border-bottom:0}
+.item h3{font-size:19px}
+.item p{margin:2px 0 10px;color:var(--soft);font-size:15px;line-height:1.55;grid-column:1/-1}
+.price{color:var(--gold);font-weight:800;font-size:24px;white-space:nowrap;direction:ltr}
+.buy{grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;min-height:44px;padding:8px 20px;border-radius:999px;background:var(--navy);color:#f5f0e8;font-weight:700;font-size:15px;text-decoration:none}
+:root[data-theme=dark] .buy{background:#d4b26a;color:#1b2342}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .buy{background:#d4b26a;color:#1b2342}}
+.buy:hover{filter:brightness(1.15)}
+.addon{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;border:1px dashed var(--gold);border-radius:18px;padding:16px 22px}
+.addon b{font-size:18px}
+.addon .price{font-size:20px}
+.addon span{color:var(--soft)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:start}
+.steps svg{width:56px;height:56px}
+.steps p{margin:6px 0 0;color:var(--soft)}
+.pay{background:var(--navy);color:#f5f0e8}
+.pay .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.pay p{color:#cfcbd9;margin:14px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{border:1px solid #4a5480;border-radius:12px;padding:10px 16px;font-weight:700;background:#222b52}
+.faq details{border-bottom:1px solid var(--line);padding:6px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:18px;padding:12px 0;list-style-position:inside}
+.faq details p{margin:0 0 14px;color:var(--soft)}
+.faq .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,64px)}
+.contact{text-align:center;background:var(--card);border-top:1px solid var(--line)}
+.contact p{color:var(--soft);margin:12px auto 24px;max-width:32em}
+.contact .btns{justify-content:center}
+footer{background:var(--navy);color:#cfcbd9;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;padding:22px max(5vw,16px)}
+footer a{color:#d4b26a}
+@media(max-width:980px){.groups{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.groups .group:last-child{grid-column:1/-1}}
+@media(max-width:760px){.hero .wrap,.pay .wrap,.faq .wrap{grid-template-columns:minmax(0,1fr)}.fig{max-width:420px;order:-1}.hero .text{order:0}.steps{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.groups{grid-template-columns:minmax(0,1fr)}nav ul{gap:4px 16px;font-size:15px}.logo{font-size:21px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="استرولوجي">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M20 4a12 12 0 1 0 8 19A10 10 0 0 1 20 4z" fill="#d4b26a"/></svg>
+      استرولوجي
+    </a>
+    <ul>
+      <li><a href="#services">الخدمات</a></li>
+      <li><a href="#how">إزاي تحجز</a></li>
+      <li><a href="#faq">أسئلة</a></li>
+      <li><a href="#contact">تواصل</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="band hero" id="top">
+  <div class="wrap">
+    <div class="text">
+      <h1>خريطتك الفلكية مقرية بالتفصيل، بلغتك</h1>
+      <p class="lead">قراءات ميلادية وسنوية وتوقعات للجواز والشغل والفلوس، مكتوبة ومفصلة وبتوصلك على إيميلك. والفويس متاح لو حابب.</p>
+      <div class="btns">
+        <a class="btn main" href="#services">اختار قراءتك</a>
+        <a class="btn alt" href="https://www.tiktok.com/@astrologyy2" target="_blank" rel="noopener">تابعنا على تيك توك</a>
+      </div>
+      <div class="trust">
+        <span><i></i>دفع آمن بالفيزا والماستركارد</span>
+        <span><i></i>من أي دولة</span>
+        <span><i></i>تصحيح الطالع متاح</span>
+      </div>
+    </div>
+    <div class="fig" aria-label="رسم لخريطة ميلادية فيها الأبراج الاتناشر والكواكب">
+      <svg id="wheel" viewBox="0 0 600 600" role="img" aria-hidden="true"></svg>
+    </div>
+  </div>
+</header>
+
+<section class="band services" id="services">
+  <div class="wrap">
+    <div class="head">
+      <h2>قائمة الخدمات</h2>
+      <p>اختار الخدمة ودوس احجز. في صفحة الدفع هتكتب تاريخ وساعة ومكان ميلادك، وتختار لو عايز تصحيح الطالع.</p>
+    </div>
+    <div class="groups" id="groups"></div>
+    <div class="addon">
+      <b>تصحيح الطالع</b><span class="price">+$15</span>
+      <span>إضافة على أي خدمة لو وقت ميلادك مش مظبوط. بتختارها من صفحة الدفع.</span>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="head"><h2>إزاي تحجز</h2><p>تلات خطوات، والعملية كلها من الموبايل في دقيقتين.</p></div>
+    <ol class="steps">
+      <li>
+        <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="none" stroke="var(--gold)" stroke-width="2"/><text x="28" y="37" text-anchor="middle" font-size="26" font-weight="800" fill="var(--gold)" font-family="Tajawal">١</text></svg>
+        <div><h3>اختار الخدمة</h3><p>من القائمة فوق، ودوس "احجز الآن".</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="none" stroke="var(--gold)" stroke-width="2"/><text x="28" y="37" text-anchor="middle" font-size="26" font-weight="800" fill="var(--gold)" font-family="Tajawal">٢</text></svg>
+        <div><h3>اكتب بياناتك وادفع</h3><p>تاريخ وساعة ومكان ميلادك، وإيميلك، وبعدين تدفع بالكارت.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="none" stroke="var(--gold)" stroke-width="2"/><text x="28" y="37" text-anchor="middle" font-size="26" font-weight="800" fill="var(--gold)" font-family="Tajawal">٣</text></svg>
+        <div><h3>استلم قراءتك</h3><p>القراءة بتوصلك مكتوبة ومفصلة على إيميلك، أو فويس لو طلبت.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="band pay">
+  <div class="wrap">
+    <div>
+      <h2>الدفع آمن ومن أي دولة</h2>
+      <p>الدفع بيتم عن طريق Gumroad، منصة دفع عالمية. بيانات الكارت بتتكتب عندهم مباشرة ومحدش غيرهم بيشوفها، وبيوصلك إيصال على إيميلك.</p>
+    </div>
+    <div class="chips">
+      <span>Visa</span><span>Mastercard</span><span>دولار</span><span>ريال سعودي</span><span>درهم إماراتي</span><span>يورو</span>
+    </div>
+  </div>
+</section>
+
+<section class="band faq" id="faq">
+  <div class="wrap">
+    <div><h2>أسئلة بتتسأل كتير</h2></div>
+    <div>
+      <details open><summary>مش عارف ساعة ميلادي بالظبط، أعمل إيه؟</summary><p>اكتب الوقت التقريبي، واختار "مع تصحيح الطالع" في صفحة الدفع. التصحيح بيضبط الطالع عشان القراءة تطلع دقيقة.</p></details>
+      <details><summary>القراءة بتوصل إزاي؟</summary><p>مكتوبة ومفصلة على الإيميل اللي كتبته وانت بتدفع. ولو حابب تبقى فويس، اكتب ده في آخر خانة في صفحة الدفع.</p></details>
+      <details><summary>في التوافقية، أكتب بيانات الطرف التاني فين؟</summary><p>في صفحة الدفع فيه خانة أخيرة اختيارية، اكتب فيها تاريخ وساعة ومكان ميلاد الطرف التاني.</p></details>
+      <details><summary>عندي سؤال واحد بس؟</summary><p>اختار خدمة "سؤال واحد" واكتب سؤالك في الخانة الأخيرة في صفحة الدفع.</p></details>
+      <details><summary>ممكن أدفع من بره مصر؟</summary><p>أيوه، من أي دولة بالفيزا أو الماستركارد، وتقدر تختار عملتك في صفحة الدفع.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <h2>محتار تختار أنهي قراءة؟</h2>
+    <p>تابعنا على تيك توك، هتلاقي هناك كل جديد عن الأبراج والعبورات، ولما تعرف إنت عايز تسأل عن إيه ارجع اختار الخدمة المناسبة.</p>
+    <div class="btns">
+      <a class="btn main" href="https://www.tiktok.com/@astrologyy2" target="_blank" rel="noopener">تيك توك: @astrologyy2</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>استرولوجي · قراءات فلكية</span>
+    <span>تيك توك: <a href="https://www.tiktok.com/@astrologyy2" target="_blank" rel="noopener">@astrologyy2</a></span>
+  </div>
+</footer>
+
+<script>
+{
+  const G = 'https://devmaster28.gumroad.com/l/';
+  const groups = [
+    {name:'الخريطة الميلادية', items:[
+      ['ميلادية أساسية',25,'شخصيتك، نقط قوتك وضعفك، والجواز والفلوس والشغل باختصار','qgddmo'],
+      ['ميلادية تفصيلية',40,'كل بيوت الخريطة بالتفصيل والكارما والدروس + سؤالين متابعة','siuyxj'],
+      ['السنوية (Solar Return)',30,'توقعات سنتك الجاية شهر بشهر','bysgyn'],
+      ['الباقة الشاملة',65,'تفصيلية + سنوية + العبورات + متابعة أسئلة لمدة شهر','gtvil']]},
+    {name:'باقات المواضيع', items:[
+      ['الجواز والشريك',30,'هتتجوز امتى، شكل شريكك وشغله وأهله، وهتقابله فين','epfsaa'],
+      ['الفلوس والشغل',30,'رزقك منين، الشغل المناسب ليك، وأحسن فترات للفلوس','ywwijf'],
+      ['توافقية مع توقعات الزواج',35,'تحليل توافق شامل ومعمق بين الطرفين مع توقعات الزواج','sdfow']]},
+    {name:'استفسارات سريعة', items:[
+      ['سؤال واحد',15,'إجابة مركزة ومفصلة على سؤال واحد','bxxos'],
+      ['توقيت حدث معين',20,'سفر، قرار، عقد، فرح.. امتى الوقت المناسب','okmjd']]}
+  ];
+  document.getElementById('groups').innerHTML = groups.map(g =>
+    `<div class="group"><span class="tag">${g.name}</span>` +
+    g.items.map(([n,p,d,id]) =>
+      `<div class="item"><h3>${n}</h3><span class="price">$${p}</span><p>${d}</p>` +
+      `<a class="buy" href="${G}${id}" target="_blank" rel="noopener">احجز الآن</a></div>`).join('') +
+    `</div>`).join('');
+
+  const s = document.getElementById('wheel');
+  const C = 300, R1 = 286, R2 = 236, R3 = 150;
+  const pt = (r, a) => [C + r * Math.cos(a), C + r * Math.sin(a)];
+  const rad = d => (d - 90) * Math.PI / 180;
+  const signs = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+  let g = '';
+  g += `<defs><radialGradient id="sky" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#2a3566"/><stop offset="1" stop-color="#141a38"/></radialGradient></defs>`;
+  g += `<circle cx="${C}" cy="${C}" r="${R1+8}" fill="url(#sky)"/>`;
+  let seed = 7;
+  const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+  for (let i = 0; i < 70; i++) {
+    const a = rnd() * Math.PI * 2, r = R3 * .2 + rnd() * (R3 - 30);
+    const [x, y] = pt(r, a);
+    g += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(rnd()*1.4+.4).toFixed(2)}" fill="#efe1bf" opacity="${(rnd()*.6+.25).toFixed(2)}"/>`;
+  }
+  g += `<g id="spin">`;
+  g += `<circle cx="${C}" cy="${C}" r="${R1}" fill="none" stroke="#d4b26a" stroke-width="2.5"/>`;
+  g += `<circle cx="${C}" cy="${C}" r="${R2}" fill="none" stroke="#d4b26a" stroke-width="1.5"/>`;
+  g += `<circle cx="${C}" cy="${C}" r="${R3}" fill="none" stroke="#d4b26a" stroke-width="1.2" opacity=".8"/>`;
+  for (let i = 0; i < 360; i += 5) {
+    const [x1, y1] = pt(R1, rad(i)), [x2, y2] = pt(R1 - (i % 30 === 0 ? 0 : i % 10 === 0 ? 10 : 6), rad(i));
+    g += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#d4b26a" stroke-width="1"/>`;
+  }
+  for (let i = 0; i < 12; i++) {
+    const [x1, y1] = pt(R1, rad(i * 30)), [x2, y2] = pt(R3, rad(i * 30));
+    g += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#d4b26a" stroke-width="1.2" opacity=".85"/>`;
+    const [tx, ty] = pt((R1 + R2) / 2, rad(i * 30 + 15));
+    g += `<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-size="28" fill="#efe1bf" font-family="'Segoe UI Symbol','Noto Sans Symbols 2',serif">${signs[i]}&#xFE0E;</text>`;
+    const [hx, hy] = pt(R3 + 16, rad(i * 30 + 15));
+    g += `<text x="${hx.toFixed(1)}" y="${hy.toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#d4b26a" font-family="Tajawal">${i + 1}</text>`;
+  }
+  const planets = [['☉',24],['☽',97],['☿',41],['♀',188],['♂',252],['♃',300],['♄',140]];
+  const pos = planets.map(([, d]) => pt(R3 - 34, rad(d)));
+  const aspects = [[0,3],[1,5],[2,4],[3,6],[0,5],[1,4]];
+  aspects.forEach(([a, b], k) => {
+    g += `<line x1="${pos[a][0].toFixed(1)}" y1="${pos[a][1].toFixed(1)}" x2="${pos[b][0].toFixed(1)}" y2="${pos[b][1].toFixed(1)}" stroke="${k % 2 ? '#e0a58a' : '#8fb4e8'}" stroke-width="1.3" opacity=".75"/>`;
+  });
+  planets.forEach(([sym], i) => {
+    const [x, y] = pos[i];
+    g += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="15" fill="#141a38" stroke="#d4b26a" stroke-width="1.5"/>`;
+    g += `<text x="${x.toFixed(1)}" y="${(y + 1).toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-size="17" fill="#f3d998" font-family="'Segoe UI Symbol','Noto Sans Symbols 2',serif">${sym}&#xFE0E;</text>`;
+  });
+  g += `</g>`;
+  g += `<path d="M${C+14} ${C-38}a40 40 0 1 0 26 66a33 33 0 0 1 -26 -66z" fill="#d4b26a" opacity=".95"/>`;
+  s.innerHTML = g;
+}
+</script>
+</body>
+</html>
